@@ -49,7 +49,9 @@ public class Enemy : Actor
 
     protected override void Die()
     {
+        base.Die();
         bb.SetVariableValue("IsDead", true);
         gameObject.layer = LayerMask.NameToLayer("Void");
     }
+    
 }

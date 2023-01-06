@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
-    [SerializeField]
-    protected float hp = 100f;
+    public float hp = 100f;
     
     public float Damage = 10f;
 
     public bool IsDead { get; protected set; }
+
+    public event Action<Actor> OnDead; 
 
     public virtual void HpChange(float delta)
     {
@@ -25,6 +27,6 @@ public class Actor : MonoBehaviour
 
     protected virtual void Die()
     {
-        
+        OnDead?.Invoke(this);
     }
 }
