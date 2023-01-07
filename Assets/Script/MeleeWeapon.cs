@@ -33,7 +33,7 @@ public class MeleeWeapon : Weapon
         {
             if (attackedActors.Contains(actor))
                 return;
-            actor.HpChange(-Owner.Damage);
+            actor.HpChange(-Owner.damage);
             attackedActors.Add(actor);
         }
     }

@@ -11,8 +11,9 @@ public class Enemy : Actor
     
     public Weapon Weapon { get; protected set; }
     
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         tree = GetComponent<BehaviourTreeOwner>();
         bb = GetComponent<Blackboard>();
         player = FindObjectOfType<PlayerController>();

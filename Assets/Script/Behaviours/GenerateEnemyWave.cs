@@ -30,8 +30,9 @@ public class GenerateEnemyWave : ActionTask<EnemyGenerator>
             int index2 = Random.Range(0, spawnPoints.Length); //随机敌人生成点
             GameObject go = Object.Instantiate(enemyPrefabs[index1], spawnPoints[index2].transform); //生成敌人
             Actor actor = go.GetComponent<Actor>();
-            actor.Damage = wave.damageMultiplier;
+            actor.damage = wave.damageMultiplier;
             actor.hp *= wave.hpMultiplier;
+            actor.maxHp *= wave.hpMultiplier;
             agent.AddNewEnemy(actor);
             yield return new WaitForSeconds(wave.spawnInterval);
         }

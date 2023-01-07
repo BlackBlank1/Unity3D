@@ -1,15 +1,27 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Actor : MonoBehaviour
 {
     public float hp = 100f;
+
+    public float maxHp = 100f;
     
-    public float Damage = 10f;
+    [FormerlySerializedAs("Damage")]
+    public float damage = 10f;
 
     public bool IsDead { get; protected set; }
+    public event Action<Actor> OnDead;
 
-    public event Action<Actor> OnDead; 
+    public delegate void HpChangeDelegate(float hp, float maxHp);
+
+    public event HpChangeDelegate OnHpChanged;
+
+    protected virtual void Start()
+    {
+        OnHpChanged?.Invoke(hp, maxHp);
+    }
 
     public virtual void HpChange(float delta)
     {
@@ -17,7 +29,8 @@ public class Actor : MonoBehaviour
         {
             return;
         }
-        hp += delta;
+        hp = Mathf.Clamp(hp + delta, 0, maxHp);
+        OnHpChanged?.Invoke(hp, maxHp);
         if (hp <= 0)
         {
             IsDead = true;

@@ -25,13 +25,13 @@ public class PlayerController : Actor
     private Animator animator;
     private bool isFiring;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         cc = GetComponent<CharacterController>();
         gun = GetComponentInChildren<Gun>();
         camera = Camera.main;
         animator = GetComponent<Animator>();
-        
     }
 
     void Update()
