@@ -12,7 +12,7 @@ public class InGameUI : MonoBehaviour
         playerController.OnHpChanged += OnPlayerHpChanged;
     }
 
-    private void OnPlayerHpChanged(float hp, float maxHp)
+    private void OnPlayerHpChanged(float hp, float maxHp, float delta)
     {
         playerHpSlider.value = hp / maxHp;
     }

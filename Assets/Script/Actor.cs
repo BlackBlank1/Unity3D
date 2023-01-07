@@ -14,13 +14,13 @@ public class Actor : MonoBehaviour
     public bool IsDead { get; protected set; }
     public event Action<Actor> OnDead;
 
-    public delegate void HpChangeDelegate(float hp, float maxHp);
+    public delegate void HpChangeDelegate(float hp, float maxHp, float delta);
 
     public event HpChangeDelegate OnHpChanged;
 
     protected virtual void Start()
     {
-        OnHpChanged?.Invoke(hp, maxHp);
+        OnHpChanged?.Invoke(hp, maxHp, 0);
     }
 
     public virtual void HpChange(float delta)
@@ -30,7 +30,7 @@ public class Actor : MonoBehaviour
             return;
         }
         hp = Mathf.Clamp(hp + delta, 0, maxHp);
-        OnHpChanged?.Invoke(hp, maxHp);
+        OnHpChanged?.Invoke(hp, maxHp, delta);
         if (hp <= 0)
         {
             IsDead = true;

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class DamageNumberManager : Singleton<DamageNumberManager>
 {
-    public void ShowNumber()
+    public DamageText damageTextPrefab;
+    public void ShowNumber(float damage, Vector3 position)
     {
-        Debug.Log("");
+        var damageText = Instantiate(damageTextPrefab);
+        damageText.transform.position = position;
+        damageText.Show(damage);
     }
 }

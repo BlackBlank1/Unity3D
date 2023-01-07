@@ -24,29 +24,15 @@ public class Enemy : Actor
         {
             bb.SetVariableValue("Target", player);
         }));
-        
+        OnHpChanged += OnSelfHpChanged;
     }
 
-    public override void HpChange(float delta)
+    private void OnSelfHpChanged(float f, float maxHp, float delta)
     {
-        if (IsDead)
-        {
-            return;
-        }
-        hp += delta;
-
-        if (delta < 0)
-        {
-            // tree.SendEvent("GetHit");
-            bb.SetVariableValue("IsGettingHit", true);
-        }
-        
-        if (hp <= 0)
-        {
-            IsDead = true;
-            Die();
-        }
+        bb.SetVariableValue("IsGettingHit", true);
+        DamageNumberManager.Instance.ShowNumber(delta, transform.position);
     }
+
 
     protected override void Die()
     {
