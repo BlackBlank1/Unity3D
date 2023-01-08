@@ -6,11 +6,10 @@ using UnityEngine.PlayerLoop;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
+    public Transform firePoint;
 
     [SerializeField]
-    private Transform firePoint;
+    private GameObject bulletPrefab;
 
     [SerializeField]
     private float fireInterval = 0.5f;

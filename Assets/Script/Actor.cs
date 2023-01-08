@@ -14,13 +14,13 @@ public class Actor : MonoBehaviour
     public bool IsDead { get; protected set; }
     public event Action<Actor> OnDead;
 
-    public delegate void HpChangeDelegate(float hp, float maxHp, float delta);
+    public delegate void HpChangeDelegate(float hp, float maxHp, float delta);   //委托
 
-    public event HpChangeDelegate OnHpChanged;
+    public event HpChangeDelegate OnHpChanged;   //事件
 
     protected virtual void Start()
     {
-        OnHpChanged?.Invoke(hp, maxHp, 0);
+        OnHpChanged?.Invoke(hp, maxHp, 0);    //广播事件
     }
 
     public virtual void HpChange(float delta)

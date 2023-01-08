@@ -23,7 +23,7 @@ MonoBehaviour:
     - {fileID: 4796635243228789610, guid: 2a66d72d5d674b24d950b4fcfda0fa60, type: 3}
     - {fileID: 5227055194957538608, guid: 13e6756761f71164093434ff3119c63e, type: 3}
     - {fileID: 4306606631597695861, guid: 731ed7fd479a03e45a951831b383795a, type: 3}
-    - {fileID: 5614902366582829235, guid: 0ca213388cf9dca4a8fad599d6cb246d, type: 3}
+    - {fileID: 6474350707523353186, guid: 0ca213388cf9dca4a8fad599d6cb246d, type: 3}
   - num: 3
     hpMultiplier: 0.1
     damageMultiplier: 2
@@ -34,4 +34,4 @@ MonoBehaviour:
     - {fileID: 4796635243228789610, guid: 2a66d72d5d674b24d950b4fcfda0fa60, type: 3}
     - {fileID: 5227055194957538608, guid: 13e6756761f71164093434ff3119c63e, type: 3}
     - {fileID: 4306606631597695861, guid: 731ed7fd479a03e45a951831b383795a, type: 3}
-    - {fileID: 5614902366582829235, guid: 0ca213388cf9dca4a8fad599d6cb246d, type: 3}
+    - {fileID: 6474350707523353186, guid: 0ca213388cf9dca4a8fad599d6cb246d, type: 3}

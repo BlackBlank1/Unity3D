@@ -24,7 +24,7 @@ public class Enemy : Actor
         {
             bb.SetVariableValue("Target", player);
         }));
-        OnHpChanged += OnSelfHpChanged;
+        OnHpChanged += OnSelfHpChanged;  //订阅事件
     }
 
     private void OnSelfHpChanged(float f, float maxHp, float delta)

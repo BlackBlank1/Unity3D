@@ -19,11 +19,15 @@ public class PlayerController : Actor
     [SerializeField]
     private float deadDelay;
 
+    [SerializeField]
+    private float rayDistance = 10f;
+
     private CharacterController cc;
     private Gun gun;
     private new Camera camera;
     private Animator animator;
     private bool isFiring;
+    private AimLine aimLine;
 
     protected override void Start()
     {
@@ -32,6 +36,7 @@ public class PlayerController : Actor
         gun = GetComponentInChildren<Gun>();
         camera = Camera.main;
         animator = GetComponent<Animator>();
+        aimLine = GetComponentInChildren<AimLine>();
     }
 
     void Update()
@@ -40,6 +45,7 @@ public class PlayerController : Actor
         {
             return;
         }
+
         var x = Input.GetAxis("Horizontal");
         var z = Input.GetAxis("Vertical");
         var velocity = new Vector3(x, 0, z);
@@ -47,6 +53,7 @@ public class PlayerController : Actor
         velocity = speed * velocity;
         cc.Move(velocity * Time.deltaTime);
 
+        //a根据鼠标位置来进行转向
         var ray = camera.ScreenPointToRay(Input.mousePosition);
         var isHit = Physics.Raycast(ray, out var hitInfo, float.PositiveInfinity, groundLayer);
         if (isHit)
@@ -60,13 +67,24 @@ public class PlayerController : Actor
         {
             StartCoroutine(Fire());
         }
+        if (Input.GetButton("Fire2") || Input.GetButton("Fire1"))
+        {
+            var direction = hitInfo.point - transform.position;
+            var endPoint = gun.firePoint.position + direction.normalized * rayDistance;
+        }
+        else
+        {
+            aimLine.Hide();
+        }
 
         var localVelocity = transform.InverseTransformVector(velocity);
-        
-        animator.SetBool("IsRunning", x!=0||z!=0);
+
+        animator.SetBool("IsRunning", x != 0 || z != 0);
         animator.SetFloat("SpeedX", localVelocity.x);
         animator.SetFloat("SpeedZ", localVelocity.z);
     }
+    
+    
 
     private IEnumerator Fire()
     {
@@ -79,19 +97,29 @@ public class PlayerController : Actor
             {
                 yield break;
             }
+
             gun.Fire(transform);
             yield return null;
         } while (Input.GetButton("Fire1"));
+
         animator.SetBool("IsFiring", false);
         isFiring = false;
     }
 
+    // private IEnumerator Aiming()
+    // {
+    //     animator.SetBool("IsAiming", true);
+    //     yield return WaitForSeconds(fireDelay);
+    //     do
+    //     {
+    //         aimLine.Show(gun.firePoint.position, endPoint);
+    //         yield return null;
+    //     } while (Input.GetButton("Fire2"));
+    // }
+
     protected override void Die()
     {
         animator.SetTrigger("Dead");
-        StartCoroutine(Util.Delay(deadDelay, () =>
-        {
-            Destroy(gameObject);
-        }));
+        StartCoroutine(Util.Delay(deadDelay, () => { Destroy(gameObject); }));
     }
 }
