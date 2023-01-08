@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NodeCanvas.Framework;
 using TS.Actors;
+using TS.Actors.Enemies;
 using TS.Battle;
 using UnityEngine;
 using UnityEngine.AI;

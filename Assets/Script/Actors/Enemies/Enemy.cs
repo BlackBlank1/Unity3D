@@ -1,10 +1,11 @@
 using NodeCanvas.BehaviourTrees;
 using NodeCanvas.Framework;
+using TS.Actors.Player;
 using TS.Battle;
 using TS.Commons;
 using UnityEngine;
 
-namespace TS.Actors
+namespace TS.Actors.Enemies
 {
 
     public class Enemy : Actor

@@ -2,6 +2,7 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using TS.Actors;
+using TS.Actors.Enemies;
 using UnityEngine;
 
 namespace TS.Behaviours

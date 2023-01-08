@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 5619039949238347530}
   - component: {fileID: 1953150210274852210}
   - component: {fileID: 1953150210274852211}
+  - component: {fileID: 6566940692005579060}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -320,9 +321,25 @@ MonoBehaviour:
   fireDelay: 0.2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 134217792
   deadDelay: 4
-  rayDistance: 10
+  gun: {fileID: 0}
+  animator: {fileID: 0}
+  aimLine: {fileID: 0}
+  aimDirection: {x: 0, y: 0, z: 0}
+  input: {fileID: 0}
+--- !u!114 &6566940692005579060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175768703511898058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e7162609310994ab1a45a614563192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1437501075607065556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b484b6be23477ca382084c21be7c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  length: 10
 --- !u!1 &4911274808927802932
 GameObject:
   m_ObjectHideFlags: 0

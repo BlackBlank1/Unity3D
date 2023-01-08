@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using NodeCanvas.Framework;
 using TS.Actors;
+using TS.Actors.Enemies;
 using UnityEngine;
 using UnityEngine.AI;
 

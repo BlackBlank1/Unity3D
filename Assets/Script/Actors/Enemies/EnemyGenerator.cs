@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TS.Battle;
 using UnityEngine;
 
-namespace TS.Actors
+namespace TS.Actors.Enemies
 {
 
     public class EnemyGenerator : MonoBehaviour

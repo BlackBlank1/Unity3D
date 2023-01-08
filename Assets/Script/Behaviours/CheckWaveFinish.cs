@@ -1,5 +1,6 @@
 ﻿using NodeCanvas.Framework;
 using TS.Actors;
+using TS.Actors.Enemies;
 
 namespace TS.Behaviours
 {

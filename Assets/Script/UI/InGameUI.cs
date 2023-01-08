@@ -1,4 +1,5 @@
 ﻿using TS.Actors;
+using TS.Actors.Player;
 using UnityEngine;
 using UnityEngine.UI;
 

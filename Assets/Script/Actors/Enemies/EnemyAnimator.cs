@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace TS.Actors
+namespace TS.Actors.Enemies
 {
 
     public class EnemyAnimator : MonoBehaviour
