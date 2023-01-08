@@ -11,8 +11,10 @@ namespace TS.Actors.Player.States
             base.Execute();
             p.HandleMovement();
             p.RotateTowardsAim();
-            
-            p.aimLine.Show(p.gun.firePoint.position, p.aimDirection);
+
+            var aimLineForward = p.gun.firePoint.forward;
+            aimLineForward.y = 0;
+            p.aimLine.Show(p.gun.firePoint.position, aimLineForward);
 
             if (p.input.fire || p.input.fireDown)
             {
@@ -37,6 +39,7 @@ namespace TS.Actors.Player.States
             p.animator.SetBool(AnimID.IsAiming, false);
             p.animator.SetBool(AnimID.IsFiring, false);
             p.aimLine.Hide();
+            p.moveDirection = p.aimDirection;
         }
         
     }

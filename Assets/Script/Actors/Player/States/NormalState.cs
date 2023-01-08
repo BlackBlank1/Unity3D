@@ -8,7 +8,7 @@ namespace TS.Actors.Player.States
         {
             base.Execute();
             p.HandleMovement();
-            p.RotateTowardsAim(); // TODO 转向移动方向
+            p.RotateTowardsMovement();
 
             if (p.input.aim || p.input.fireDown)
             {

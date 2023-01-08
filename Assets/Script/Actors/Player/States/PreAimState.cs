@@ -25,13 +25,12 @@ namespace TS.Actors.Player.States
         {
             base.Execute();
             p.HandleMovement();
-            p.RotateTowardsAim();
+            p.RotateTowardsAim(p.normalTurnSpeed);
         }
 
         private IEnumerator DoPreAim()
         {
             yield return new WaitForSeconds(p.fireDelay);
-            // TODO 旋转到目标
             coroutine = null;
 
             m.ChangeState<AimState>();

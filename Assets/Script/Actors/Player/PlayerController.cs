@@ -16,6 +16,10 @@ namespace TS.Actors.Player
         [SerializeField]
         private float speed = 10f;
 
+        public float normalTurnSpeed = 1440f;
+
+        public float aimTurnSpeed = 360f;
+
         public float fireDelay = 0.1f;
 
         [SerializeField]
@@ -26,16 +30,19 @@ namespace TS.Actors.Player
 
         private MonoFSM fsm;
         private CharacterController cc;
+        public Animator animator;
         public Gun gun;
         private new Camera camera;
-        public Animator animator;
-        private bool isFiring;
-        public AimLine aimLine;
-        public Vector3 aimDirection;
 
+        public Vector3 moveDirection;
+        [HideInInspector]
+        public AimLine aimLine;
+        [HideInInspector]
+        public Vector3 aimDirection;
         [HideInInspector]
         public PlayerInput input;
 
+        
         private void Awake()
         {
             cc = GetComponent<CharacterController>();
@@ -51,6 +58,7 @@ namespace TS.Actors.Player
         {
             base.Start();
             input = PlayerInput.Instance;
+            moveDirection = transform.forward;
         }
 
         /// <summary>
@@ -71,35 +79,53 @@ namespace TS.Actors.Player
         /// </summary>
         public void HandleMovement()
         {
-            var x = Input.GetAxis("Horizontal");
-            var z = Input.GetAxis("Vertical");
-            var velocity = new Vector3(x, 0, z);
+            var movement = new Vector3(
+                Input.GetAxis("Horizontal"), 
+                0,  
+                Input.GetAxis("Vertical")).normalized;
+
+            if (movement != Vector3.zero)
+                moveDirection = movement;
+            
+            var velocity = movement;
             velocity.y = -gravity;
             velocity = speed * velocity;
             cc.Move(velocity * Time.deltaTime);
             
             var localVelocity = transform.InverseTransformVector(velocity);
-            animator.SetBool("IsRunning", x != 0 || z != 0);
+            animator.SetBool("IsRunning", movement.x != 0 || movement.z != 0);
             animator.SetFloat("SpeedX", localVelocity.x);
             animator.SetFloat("SpeedZ", localVelocity.z);
+        }
+
+        public void RotateTowards(Vector3 direction, float turnSpeed)
+        {
+            var targetRot = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
+        }
+
+        public void RotateTowardsMovement()
+        {
+            RotateTowards(moveDirection, normalTurnSpeed);
         }
 
         /// <summary>
         /// 转身朝向瞄准方向
         /// </summary>
-        public void RotateTowardsAim()
+        public void RotateTowardsAim(float? turnSpeed = null)
         {
+            if (turnSpeed == null)
+                turnSpeed = aimTurnSpeed;
+            
             // TODO 适配触屏摇杆
             // 根据鼠标位置来进行转向
             var ray = camera.ScreenPointToRay(Input.mousePosition);
             var isHit = Physics.Raycast(ray, out var hitInfo, float.PositiveInfinity, groundLayer);
             if (isHit)
             {
-                var lookAt = hitInfo.point;
-                lookAt.y = transform.position.y;
-                transform.LookAt(lookAt); // TODO
-
                 aimDirection = hitInfo.point - transform.position;
+                aimDirection.y = 0;
+                RotateTowards(aimDirection, turnSpeed.Value);
             }
             else
             {
