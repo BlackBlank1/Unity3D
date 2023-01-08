@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using TS.Actors;
 using UnityEngine;
 
-namespace Script.Behaviours
+namespace TS.Behaviours
 {
     public class MeleeAttack : ActionTask<Enemy>
     {
