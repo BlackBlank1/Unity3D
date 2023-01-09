@@ -1,6 +1,8 @@
-﻿using TS.Actors;
+﻿using System;
+using TS.Actors;
 using TS.Actors.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TS.UI

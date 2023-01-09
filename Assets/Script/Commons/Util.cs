@@ -13,5 +13,4 @@ namespace TS.Commons
             action.Invoke();
         }
     }
-
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TS.Battle;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace TS.Actors.Enemies
         private List<Actor> enemyList = new();
 
         public LevelConfig levelConfig;
+
+        public event Action OnGameWin; 
 
         public void AddNewEnemy(Actor actor)
         {
@@ -25,6 +28,11 @@ namespace TS.Actors.Enemies
         public bool HasEnemy()
         {
             return enemyList.Count != 0;
+        }
+
+        public void NotifyGameWin()
+        {
+            OnGameWin?.Invoke();
         }
     }
 

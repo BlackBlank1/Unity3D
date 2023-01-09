@@ -3,6 +3,7 @@ using RobustFSM.Mono;
 using TS.Actors.Player.States;
 using TS.Battle;
 using TS.Commons;
+using TS.UI;
 using UnityEngine;
 
 namespace TS.Actors.Player
@@ -33,6 +34,7 @@ namespace TS.Actors.Player
         public Animator animator;
         public Gun gun;
         private new Camera camera;
+
 
         public Vector3 moveDirection;
         [HideInInspector]
@@ -135,6 +137,7 @@ namespace TS.Actors.Player
         
         protected override void Die()
         {
+            base.Die();
             fsm.ChangeState<DeathState>();
         }
     }
