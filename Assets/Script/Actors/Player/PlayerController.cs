@@ -12,9 +12,10 @@ namespace TS.Actors.Player
     {
         [SerializeField]
         private float gravity = 20f;
-
-        [SerializeField]
-        private float speed = 10f;
+        
+        public float normalSpeed = 10f;
+        
+        public float aimSpeed = 5f;
 
         public float normalTurnSpeed = 1440f;
 
@@ -24,9 +25,8 @@ namespace TS.Actors.Player
 
         [SerializeField]
         private LayerMask groundLayer;
-
-        [SerializeField]
-        private float deadDelay;
+        
+        public float deadDelay;
 
         private MonoFSM fsm;
         private CharacterController cc;
@@ -77,7 +77,7 @@ namespace TS.Actors.Player
         /// <summary>
         /// 处理移动
         /// </summary>
-        public void HandleMovement()
+        public void HandleMovement(float speed)
         {
             var movement = new Vector3(
                 Input.GetAxis("Horizontal"), 
@@ -135,8 +135,7 @@ namespace TS.Actors.Player
         
         protected override void Die()
         {
-            animator.SetTrigger("Dead");
-            StartCoroutine(Util.Delay(deadDelay, () => { Destroy(gameObject); }));
+            fsm.ChangeState<DeathState>();
         }
     }
 

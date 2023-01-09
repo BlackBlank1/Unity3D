@@ -9,7 +9,7 @@ namespace TS.Actors.Player.States
         public override void Execute()
         {
             base.Execute();
-            p.HandleMovement();
+            p.HandleMovement(p.aimSpeed);
             p.RotateTowardsAim();
 
             var aimLineForward = p.gun.firePoint.forward;

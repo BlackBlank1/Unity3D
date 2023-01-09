@@ -24,7 +24,7 @@ namespace TS.Actors.Player.States
         public override void Execute()
         {
             base.Execute();
-            p.HandleMovement();
+            p.HandleMovement(p.normalSpeed);
             p.RotateTowardsAim(p.normalTurnSpeed);
         }
 

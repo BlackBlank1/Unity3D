@@ -1726,11 +1726,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953150210274852211, guid: 72010d1f1fdb30946960eddf5e3aefd5, type: 3}
       propertyPath: hp
-      value: 10000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1953150210274852211, guid: 72010d1f1fdb30946960eddf5e3aefd5, type: 3}
       propertyPath: maxHp
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953150210274852211, guid: 72010d1f1fdb30946960eddf5e3aefd5, type: 3}
+      propertyPath: aimSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8928337527757573878, guid: 72010d1f1fdb30946960eddf5e3aefd5, type: 3}
       propertyPath: m_LocalRotation.w
