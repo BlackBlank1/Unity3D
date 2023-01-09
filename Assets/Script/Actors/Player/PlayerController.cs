@@ -27,8 +27,6 @@ namespace TS.Actors.Player
         [SerializeField]
         private LayerMask groundLayer;
         
-        public float deadDelay;
-
         private MonoFSM fsm;
         private CharacterController cc;
         public Animator animator;

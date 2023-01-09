@@ -18,7 +18,6 @@ namespace TS.UI
         {
             StartCoroutine(Util.Delay(delay, () =>
             {
-                Debug.Log("11");
                 canvasGroup.alpha = 1;
                 canvasGroup.blocksRaycasts = true;
             }));
