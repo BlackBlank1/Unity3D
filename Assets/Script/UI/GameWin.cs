@@ -8,8 +8,8 @@ namespace TS.UI
     {
         private void Awake()
         {
-            var enemyGenerator = FindObjectOfType<EnemyGenerator>();
-            enemyGenerator.OnGameWin += OnGameWin;
+            var director = FindObjectOfType<Director>();
+            director.OnGameWin += OnGameWin;
         }
 
         private void OnGameWin()

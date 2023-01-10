@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NodeCanvas.Framework;
 using TS.Battle;
 using UnityEngine;
 
@@ -12,7 +13,23 @@ namespace TS.Actors.Enemies
 
         public LevelConfig levelConfig;
 
-        public event Action OnGameWin; 
+        private Blackboard blackboard;
+
+        public event Action OnFinished;
+
+        private void Start()
+        {
+            blackboard = GetComponent<Blackboard>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                blackboard.SetVariableValue("IsStarted", true);
+                GetComponent<Collider>().enabled = false;
+            }
+        }
 
         public void AddNewEnemy(Actor actor)
         {
@@ -32,7 +49,7 @@ namespace TS.Actors.Enemies
 
         public void NotifyGameWin()
         {
-            OnGameWin?.Invoke();
+            OnFinished?.Invoke();
         }
     }
 

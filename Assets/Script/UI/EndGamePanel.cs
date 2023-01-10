@@ -18,6 +18,7 @@ namespace TS.UI
             button.onClick.AddListener(() =>
             {
                 SceneManager.LoadScene("HomeScene");
+                Time.timeScale = 1;
             });
             canvasGroup = GetComponent<CanvasGroup>();
             canvasGroup.alpha = 0;
