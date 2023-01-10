@@ -12,9 +12,11 @@ namespace TS.UI
 
         private void Start()
         {
+            Debug.Log("222");
             battleButton.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("SampleScene");
+                Debug.Log("11111");
+                SceneManager.LoadScene("GameScene");
             });
         }
     }
