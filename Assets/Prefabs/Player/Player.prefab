@@ -296,7 +296,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 30
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -317,14 +317,14 @@ MonoBehaviour:
   maxHp: 100
   damage: 10
   gravity: 20
-  speed: 10
+  normalSpeed: 10
+  aimSpeed: 5
   normalTurnSpeed: 1440
   aimTurnSpeed: 360
   fireDelay: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 134217792
-  deadDelay: 4
   animator: {fileID: 0}
   gun: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5868855818973841969}
-  bulletPrefab: {fileID: 1033599959302706172, guid: 21a772f2817260241b0ad9d51c3232c2, type: 3}
+  bulletPrefab: {fileID: 6187874923348539321, guid: 4c845cc493ee0c544b2afed3d4a7ed2d, type: 3}
   fireInterval: 0.2
 --- !u!1 &2287683551129197074
 GameObject:

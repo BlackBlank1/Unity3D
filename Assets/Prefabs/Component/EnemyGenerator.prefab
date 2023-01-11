@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6777468743498217855
+--- !u!1 &7039443975856437192
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6777468743498217794}
-  - component: {fileID: 6777468743498217853}
-  - component: {fileID: 6777468743498217852}
-  - component: {fileID: 6777468743498217795}
-  - component: {fileID: 5676776572916378404}
+  - component: {fileID: 1259626947479384781}
+  - component: {fileID: 1935073026297804750}
+  - component: {fileID: 8293752288520705463}
+  - component: {fileID: 7556859874415334166}
+  - component: {fileID: 3950517118417917091}
   m_Layer: 0
   m_Name: EnemyGenerator
   m_TagString: Untagged
@@ -20,28 +20,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6777468743498217794
+--- !u!4 &1259626947479384781
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777468743498217855}
+  m_GameObject: {fileID: 7039443975856437192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -13.71, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6777468743498217853
+--- !u!114 &1935073026297804750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777468743498217855}
+  m_GameObject: {fileID: 7039443975856437192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
@@ -63,14 +63,14 @@ MonoBehaviour:
   _preInitializeSubGraphs: 0
   _updateMode: 0
   _graph: {fileID: 11400000, guid: 18ff5a64a6984c341a2dfb16ab9f862a, type: 2}
-  _blackboard: {fileID: 6777468743498217852}
---- !u!114 &6777468743498217852
+  _blackboard: {fileID: 8293752288520705463}
+--- !u!114 &8293752288520705463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777468743498217855}
+  m_GameObject: {fileID: 7039443975856437192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
@@ -92,26 +92,26 @@ MonoBehaviour:
   - _json: '{"_name":"IsStarted","_id":"6c99e91c-6710-4ba6-be76-938368c80e87","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
---- !u!114 &6777468743498217795
+--- !u!114 &7556859874415334166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777468743498217855}
+  m_GameObject: {fileID: 7039443975856437192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bce51e1021b54628a0bb823532047495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelConfig: {fileID: 11400000, guid: 8799f4e6021f9cc46b08696bcb63adf7, type: 2}
---- !u!65 &5676776572916378404
+--- !u!65 &3950517118417917091
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777468743498217855}
+  m_GameObject: {fileID: 7039443975856437192}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
