@@ -13,7 +13,6 @@ namespace TS.Actors.Enemies
 
         private BehaviourTreeOwner tree;
         private Blackboard bb;
-        private PlayerController player;
 
         public Weapon Weapon { get; protected set; }
 
@@ -22,11 +21,9 @@ namespace TS.Actors.Enemies
             base.Start();
             tree = GetComponent<BehaviourTreeOwner>();
             bb = GetComponent<Blackboard>();
-            player = FindObjectOfType<PlayerController>();
             Weapon = GetComponentInChildren<Weapon>();
             Weapon.Owner = this;
 
-            StartCoroutine(Util.Delay(1f, () => { bb.SetVariableValue("Target", player); }));
             OnHpChanged += OnSelfHpChanged; //订阅事件
         }
 

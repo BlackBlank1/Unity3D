@@ -16,6 +16,8 @@ namespace NodeCanvas.Tasks.Actions
         public BBParameter<float> speed = 4;
         public BBParameter<float> keepDistance = 0.1f;
         public BBParameter<float> acceleration = 10f;
+        public BBParameter<float> stopDistance = 0f;
+
 
         private Vector3? lastRequest;
 
@@ -27,6 +29,7 @@ namespace NodeCanvas.Tasks.Actions
             if ( target.value == null ) { EndAction(false); return; }
             agent.speed = speed.value;
             agent.acceleration = acceleration.value;
+            agent.stoppingDistance = stopDistance.value;
             if ( Vector3.Distance(agent.transform.position, target.value.transform.position) <= agent.stoppingDistance + keepDistance.value ) {
                 EndAction(true);
                 return;

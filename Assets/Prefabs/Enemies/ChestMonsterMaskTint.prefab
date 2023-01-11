@@ -760,7 +760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  Damage: 10
+  maxHp: 100
+  damage: 10
 --- !u!114 &4306606631597695819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,7 +801,7 @@ MonoBehaviour:
   _lockBoundGraphPrefabOverrides: 1
   _preInitializeSubGraphs: 0
   _updateMode: 0
-  _graph: {fileID: 11400000, guid: 53043d51239da9b4e923a85c78d2fe6d, type: 2}
+  _graph: {fileID: 11400000, guid: 84b3f6e0d08af704fa936ec2cc1bba02, type: 2}
   _blackboard: {fileID: 4306606631597695816}
 --- !u!114 &4306606631597695816
 MonoBehaviour:
@@ -815,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"Target":{"_name":"Target","_id":"9c9808b2-10e8-4a33-9d48-c1f695736531","$type":"NodeCanvas.Framework.Variable`1[[Actor,
+  _serializedBlackboard: '{"_variables":{"Target":{"_name":"Target","_id":"9c9808b2-10e8-4a33-9d48-c1f695736531","$type":"NodeCanvas.Framework.Variable`1[[TS.Actors.Actor,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"IsGettingHit":{"_name":"IsGettingHit","_id":"91edb878-b72f-4ee0-838f-0ad19869f6d1","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"IsDead":{"_name":"IsDead","_id":"4d294ca2-cbff-4501-b8b0-b1f10af7b8ea","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Pre
@@ -824,10 +825,14 @@ MonoBehaviour:
     Duration":{"_value":0.16,"_name":"Attack Duration","_id":"355cff03-b607-48cd-b415-5e2481827316","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Post
     Delay":{"_value":0.4,"_name":"Post Delay","_id":"d6252fad-58c0-4896-8abe-19c557b91984","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"IsInBattle":{"_name":"IsInBattle","_id":"94d2df0f-4d76-4a46-a84b-97825be442f1","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"IsRangeAttack":{"_name":"IsRangeAttack","_id":"31570596-451e-40b2-b011-6bc6a7c10609","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TargetPosition":{"_name":"TargetPosition","_id":"1d64da1c-ddd6-4ba2-9a68-9f3f5986db12","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StopDistance":{"_value":2.0,"_name":"StopDistance","_id":"b98c1454-f6ac-49b0-8b9a-6a0c76805eae","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
   _serializedVariables:
-  - _json: '{"_name":"Target","_id":"9c9808b2-10e8-4a33-9d48-c1f695736531","$type":"NodeCanvas.Framework.Variable`1[[Actor,
+  - _json: '{"_name":"Target","_id":"9c9808b2-10e8-4a33-9d48-c1f695736531","$type":"NodeCanvas.Framework.Variable`1[[TS.Actors.Actor,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_name":"IsGettingHit","_id":"91edb878-b72f-4ee0-838f-0ad19869f6d1","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
@@ -843,6 +848,18 @@ MonoBehaviour:
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":0.4,"_name":"Post Delay","_id":"d6252fad-58c0-4896-8abe-19c557b91984","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"IsInBattle","_id":"94d2df0f-4d76-4a46-a84b-97825be442f1","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"IsRangeAttack","_id":"31570596-451e-40b2-b011-6bc6a7c10609","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"TargetPosition","_id":"1d64da1c-ddd6-4ba2-9a68-9f3f5986db12","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_value":2.0,"_name":"StopDistance","_id":"b98c1454-f6ac-49b0-8b9a-6a0c76805eae","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
 --- !u!1 &4306606631597695863
