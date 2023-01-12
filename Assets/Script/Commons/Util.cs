@@ -14,6 +14,15 @@ namespace TS.Commons
             yield return new WaitForSeconds(delayTime);
             action.Invoke();
         }
+        
+        public static IEnumerator DelayFrames(int frames, Action action)
+        {
+            for (int i = 0; i < frames; i++)
+            {
+                yield return null;
+            }
+            action.Invoke();
+        }
 
         public static T GetRandomItem<T>(this T[] array)
         {

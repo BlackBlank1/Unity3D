@@ -20,6 +20,11 @@ namespace TS.Actors.Player
             
             aim = Input.GetButton("Fire2");
         }
-        
+
+        public void Invalidate()
+        {
+            fireDown = false;
+            fire = false;
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 namespace TS.UI
 {
@@ -10,14 +11,23 @@ namespace TS.UI
         [SerializeField]
         private Button battleButton;
 
+        [SerializeField]
+        private Button settingButton;
+
+        [SerializeField]
+        private GameObject settingUI;
         private void Start()
         {
-            Debug.Log("222");
+            settingUI.SetActive(false);
             battleButton.onClick.AddListener(() =>
             {
-                Debug.Log("11111");
                 SceneManager.LoadScene("GameScene");
             });
+            
+            settingButton.onClick.AddListener((() =>
+            {
+                settingUI.SetActive(true);
+            }));
         }
     }
 }
