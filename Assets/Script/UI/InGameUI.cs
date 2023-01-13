@@ -17,6 +17,12 @@ namespace TS.UI
         private Button backButton;
 
         [SerializeField]
+        private Button resumeButton;
+
+        [SerializeField]
+        private Button quitButton;
+
+        [SerializeField]
         private GameObject menuUI;
         
         public Slider playerHpSlider;
@@ -29,6 +35,7 @@ namespace TS.UI
 
         private void Start()
         {
+            Scene scene = SceneManager.GetActiveScene();
             menuUI.SetActive(false);
             settingButton.onClick.AddListener(() =>
             {
@@ -47,12 +54,31 @@ namespace TS.UI
                     PlayerInput.Instance.enabled = true;
                 }));
             });
+
+            resumeButton.onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene(scene.name);
+                Time.timeScale = 1;
+            });
+
+            quitButton.onClick.AddListener(() =>
+            {
+                Quit();
+            });
         }
 
         private void OnPlayerHpChanged(float hp, float maxHp, float delta)
         {
             playerHpSlider.value = hp / maxHp;
         }
+        
+        public void Quit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
     }
-
 }
