@@ -8,6 +8,7 @@ namespace TS.UI
 {
     public class EndGamePanel : MonoBehaviour
     {
+        //确定button
         public Button button;
         
         public float delay = 3.5f;

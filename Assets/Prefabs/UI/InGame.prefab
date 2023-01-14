@@ -4982,6 +4982,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 320812767622670667, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 320812767622670667, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 320812767622670667, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 320812767894846862, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5121,7 +5133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6352631623167771440, guid: 29d1dc34031877b42897a5c9880f092e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -270
+      value: -243
       objectReference: {fileID: 0}
     - target: {fileID: 6352631623167771440, guid: 29d1dc34031877b42897a5c9880f092e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

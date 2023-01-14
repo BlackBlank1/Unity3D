@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelConfig
   m_EditorClassIdentifier: 
   waves:
-  - num: 5
+  - num: 2
     hpMultiplier: 0.1
     damageMultiplier: 1
     spawnInterval: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
     - {fileID: 5227055194957538608, guid: 13e6756761f71164093434ff3119c63e, type: 3}
     - {fileID: 4306606631597695861, guid: 731ed7fd479a03e45a951831b383795a, type: 3}
     - {fileID: 6474350707523353186, guid: 0ca213388cf9dca4a8fad599d6cb246d, type: 3}
-  - num: 8
+  - num: 3
     hpMultiplier: 0.1
     damageMultiplier: 2
     spawnInterval: 2

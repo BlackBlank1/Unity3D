@@ -17,6 +17,8 @@ namespace TS.Commons
             {
                 i.OnFinished += OnFinished;
             }
+
+            DataManager.Instance.ReadLevelData();
         }
 
         private void OnFinished()
@@ -24,6 +26,7 @@ namespace TS.Commons
             count -= 1;
             if (count == 0)
             {
+                DataManager.Instance.LevelUP();
                 OnGameWin?.Invoke();
             }
         }
