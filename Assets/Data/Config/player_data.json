@@ -1,0 +1,32 @@
+[
+  {
+    "level": 1,
+    "maxHp": 100,
+    "damage": 10,
+    "maxExp": 100
+  },
+  {
+    "level": 2,
+    "maxHp": 112.5,
+    "damage": 11.25,
+    "maxExp": 200
+  },
+  {
+    "level": 3,
+    "maxHp": 125,
+    "damage": 12.5,
+    "maxExp": 300
+  },
+  {
+    "level": 4,
+    "maxHp": 137.5,
+    "damage": 13.75,
+    "maxExp": 400
+  },
+  {
+    "level": 5,
+    "maxHp": 150,
+    "damage": 15,
+    "maxExp": 500
+  }
+]

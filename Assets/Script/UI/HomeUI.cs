@@ -32,7 +32,7 @@ namespace TS.UI
         public int lostExp;
         public int rank;
 
-        private void Start()
+        private async void Start()
         {
             expSlider.interactable = false;
             rankText.text = rank.ToString();
@@ -40,14 +40,14 @@ namespace TS.UI
             expSlider.value = (float)currentExp / maxExp;
 
             settingUI.SetActive(false);
-            battleButton.onClick.AddListener(() => { SceneManager.LoadScene("GameScene"); });
+            battleButton.onClick.AddListener(() => { GameManager.Instance.LoadScene("GameScene"); });
 
             settingButton.onClick.AddListener((() => { settingUI.SetActive(true); }));
-            var playerData = DataManager.Instance.ReadPlayerData();
-            UnpdateExp(playerData.currentExp, playerData.maxExp);
+            var playerData = await DataManager.Instance.ReadPlayerData();
+            UpdateExp(playerData.currentExp, playerData.maxExp);
         }
         
-        private void UnpdateExp(int currentExp, int maxExp)
+        private void UpdateExp(int currentExp, int maxExp)
         {
             rankText.text = rank.ToString();
             expText.text = $"{currentExp.ToString()}/{maxExp.ToString()}";

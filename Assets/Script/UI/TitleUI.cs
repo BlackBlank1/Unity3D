@@ -1,4 +1,5 @@
 ﻿using System;
+using TS.Commons;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ namespace TS.UI
     {
         public void OnScreenClick()
         {
-            SceneManager.LoadScene("HomeScene");
+            GameManager.Instance.LoadScene("HomeScene");
         }
     }
 }

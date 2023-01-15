@@ -1,5 +1,6 @@
-using System;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TS.Entities;
 using UnityEngine;
 
 namespace TS.Commons
@@ -9,26 +10,25 @@ namespace TS.Commons
         private static string keyPlayerData = "keyPlayerData";
         private static string keyLevelData = "keyLevelData";
 
-        public PlayerData playerData;
-        public LevelData levelData;
-        
-        public PlayerData ReadPlayerData()
+        public PlayerData playerData { get; private set; }
+        public PlayerData[] playerDatas { get; private set; }
+        public LevelData levelData { get; private set; }
+
+        public async Task<PlayerData> ReadPlayerData()
         {
+            // 加载玩家所有等级数据
+            if (playerDatas == null)
+            {
+                var textAsset = await AssetManager.LoadAssetAsync<TextAsset>("player_data");
+                playerDatas = JsonConvert.DeserializeObject<PlayerData[]>(textAsset.text);
+            }
+
             var playerDataJson = PlayerPrefs.GetString(keyPlayerData);
             if (string.IsNullOrEmpty(playerDataJson))
             {
-                //playerDataJson为空的话，则从玩家数据配置表读取等级为1时候的数据
-                //TODO
+                // playerDataJson为空的话，则从玩家数据配置表读取等级为1时候的数据
 
-                playerData = new PlayerData
-                {
-                    level = 1,
-                    hp = 100,
-                    maxHp = 100,
-                    damage = 10,
-                    maxExp = 100,
-                    currentExp = 0
-                };
+                playerData = playerDatas[0];
             }
             else
             {
@@ -69,36 +69,15 @@ namespace TS.Commons
             var exp = playerData.currentExp + levelData.exp;
             if (exp >= playerData.maxExp)
             {
-                //TODO
-                
-                playerData.level += 1;
+                playerData = playerDatas[playerData.level];
                 playerData.currentExp = exp - playerData.maxExp;
             }
             else
             {
                 playerData.currentExp = exp;
-                
             }
 
             SavePlayerData();
         }
-    }
-
-    [Serializable]
-    public class PlayerData
-    {
-        public int level;
-        public float hp;
-        public float maxHp;
-        public float damage;
-        public int maxExp;
-        public int currentExp;
-    }
-
-    [Serializable]
-    public class LevelData
-    {
-        public int exp;
-        public int waves;
     }
 }

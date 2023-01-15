@@ -18,6 +18,10 @@ namespace TS.Commons
                 i.OnFinished += OnFinished;
             }
 
+        }
+
+        private void Start()
+        {
             DataManager.Instance.ReadLevelData();
         }
 

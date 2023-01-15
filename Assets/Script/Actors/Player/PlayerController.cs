@@ -3,19 +3,19 @@ using RobustFSM.Mono;
 using TS.Actors.Player.States;
 using TS.Battle;
 using TS.Commons;
+using TS.Entities;
 using TS.UI;
 using UnityEngine;
 
 namespace TS.Actors.Player
 {
-
     public class PlayerController : Actor
     {
         [SerializeField]
         private float gravity = 20f;
-        
+
         public float normalSpeed = 10f;
-        
+
         public float aimSpeed = 5f;
 
         public float normalTurnSpeed = 1440f;
@@ -26,7 +26,7 @@ namespace TS.Actors.Player
 
         [SerializeField]
         private LayerMask groundLayer;
-        
+
         private MonoFSM fsm;
         private CharacterController cc;
         public Animator animator;
@@ -42,7 +42,7 @@ namespace TS.Actors.Player
         [HideInInspector]
         public PlayerInput input;
 
-        
+
         private void Awake()
         {
             cc = GetComponent<CharacterController>();
@@ -56,9 +56,29 @@ namespace TS.Actors.Player
 
         protected override void Start()
         {
-            base.Start();
             input = PlayerInput.Instance;
             moveDirection = transform.forward;
+            InitAttributes();
+            base.Start();
+        }
+        
+        private async void InitAttributes()
+        {
+            // 从配置数据里面读取属性，并初始化自己的属性
+            PlayerData data;
+#if UNITY_EDITOR
+            if (DataManager.Instance.playerData != null)
+                data = DataManager.Instance.playerData;
+            else 
+                // 编辑器运行，直接运行GameScene，需要手动加载一次玩家数据
+                data = await DataManager.Instance.ReadPlayerData();
+#else
+            // 正常流程
+            data = DataManager.Instance.playerData;
+#endif
+            maxHp = data.maxHp;
+            hp = maxHp;
+            damage = data.damage;
         }
 
         /// <summary>
@@ -70,7 +90,7 @@ namespace TS.Actors.Player
             fsm.AddState<PreAimState>();
             fsm.AddState<AimState>();
             fsm.AddState<DeathState>();
-            
+
             fsm.SetInitialState<NormalState>();
         }
 
@@ -80,18 +100,18 @@ namespace TS.Actors.Player
         public void HandleMovement(float speed)
         {
             var movement = new Vector3(
-                Input.GetAxis("Horizontal"), 
-                0,  
+                Input.GetAxis("Horizontal"),
+                0,
                 Input.GetAxis("Vertical")).normalized;
 
             if (movement != Vector3.zero)
                 moveDirection = movement;
-            
+
             var velocity = movement;
             velocity.y = -gravity;
             velocity = speed * velocity;
             cc.Move(velocity * Time.deltaTime);
-            
+
             var localVelocity = transform.InverseTransformVector(velocity);
             animator.SetBool("IsRunning", movement.x != 0 || movement.z != 0);
             animator.SetFloat("SpeedX", localVelocity.x);
@@ -116,7 +136,7 @@ namespace TS.Actors.Player
         {
             if (turnSpeed == null)
                 turnSpeed = aimTurnSpeed;
-            
+
             // TODO 适配触屏摇杆
             // 根据鼠标位置来进行转向
             var ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -132,12 +152,11 @@ namespace TS.Actors.Player
                 aimDirection = transform.forward;
             }
         }
-        
+
         protected override void Die()
         {
             base.Die();
             fsm.ChangeState<DeathState>();
         }
     }
-
 }
