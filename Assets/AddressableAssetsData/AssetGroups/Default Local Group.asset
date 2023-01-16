@@ -33,12 +33,12 @@ MonoBehaviour:
     m_Address: GameScene
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 21e87d2fe4a14094c843e002c7467951
-    m_Address: Level1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 1024ba6e8e832584c9b51435bdf36b5a
     m_Address: Level2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 21e87d2fe4a14094c843e002c7467951
+    m_Address: Level1
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

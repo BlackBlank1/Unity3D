@@ -19,6 +19,9 @@ namespace TS.UI
         private GameObject settingUI;
 
         [SerializeField]
+        private GameObject levelPanel;
+
+        [SerializeField]
         private TMP_Text rankText;
 
         [SerializeField]
@@ -31,6 +34,7 @@ namespace TS.UI
 
         private async void Start()
         {
+            levelPanel.SetActive(false);
             var playerData = await DataManager.Instance.ReadPlayerData();
             expSlider.interactable = false;
             rankText.text = playerData.level.ToString();
@@ -38,7 +42,12 @@ namespace TS.UI
             expSlider.value = (float)currentExp / maxExp;
 
             settingUI.SetActive(false);
-            battleButton.onClick.AddListener(() => { GameManager.Instance.LoadScene("Level2"); });
+            
+            //点击战斗按钮后，设置levelPanel为true
+            battleButton.onClick.AddListener(() =>
+            {
+                levelPanel.SetActive(true);
+            });
 
             settingButton.onClick.AddListener((() => { settingUI.SetActive(true); }));
             UpdateExp(playerData.currentExp, playerData.maxExp, playerData.level);

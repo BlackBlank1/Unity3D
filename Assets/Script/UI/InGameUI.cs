@@ -36,6 +36,7 @@ namespace TS.UI
         private void Start()
         {
             Scene scene = SceneManager.GetActiveScene();
+            Debug.Log(scene.name);
             menuUI.SetActive(false);
             settingButton.onClick.AddListener(() =>
             {
@@ -57,28 +58,19 @@ namespace TS.UI
 
             resumeButton.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene(scene.name);
+                GameManager.Instance.LoadScene(scene.name);
                 Time.timeScale = 1;
             });
 
             quitButton.onClick.AddListener(() =>
             {
-                Quit();
+                GameManager.Instance.Quit();
             });
         }
 
         private void OnPlayerHpChanged(float hp, float maxHp, float delta)
         {
             playerHpSlider.value = hp / maxHp;
-        }
-        
-        public void Quit()
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
         }
     }
 }
