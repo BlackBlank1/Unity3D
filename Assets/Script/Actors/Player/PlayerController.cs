@@ -42,11 +42,11 @@ namespace TS.Actors.Player
         [HideInInspector]
         public PlayerInput input;
 
-
         private void Awake()
         {
             cc = GetComponent<CharacterController>();
             gun = GetComponentInChildren<Gun>();
+            gun.Owner = this;
             camera = Camera.main;
             animator = GetComponent<Animator>();
             aimLine = GetComponentInChildren<AimLine>();

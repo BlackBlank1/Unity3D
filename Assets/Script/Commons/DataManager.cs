@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TS.Entities;
@@ -13,6 +14,9 @@ namespace TS.Commons
         public PlayerData playerData { get; private set; }
         public PlayerData[] playerDatas { get; private set; }
         public LevelData levelData { get; private set; }
+        
+        public LevelData[] levelDatas { get; private set; }
+
 
         public async Task<PlayerData> ReadPlayerData()
         {
@@ -38,23 +42,24 @@ namespace TS.Commons
             return playerData;
         }
 
-        public void ReadLevelData()
+        public async Task<LevelData> ReadLevelData(String sceneName)
         {
-            var levelDataJson = PlayerPrefs.GetString(keyLevelData);
-            if (string.IsNullOrEmpty(levelDataJson))
+            if (levelDatas == null)
             {
-                //playerDataJson为空的话，则从玩家数据配置表读取等级为1时候的数据
-                //TODO
-
-                levelData = new LevelData
+                var textAsset = await AssetManager.LoadAssetAsync<TextAsset>("level_data");
+                levelDatas = JsonConvert.DeserializeObject<LevelData[]>(textAsset.text);
+            }
+            for (int i = 0; i < levelDatas.Length; i++)
+            {
+                if (levelDatas[i].id == sceneName)
                 {
-                    exp = 25
-                };
+                    levelData = levelDatas[i];
+                    return levelData;
+                }
             }
-            else
-            {
-                levelData = JsonConvert.DeserializeObject<LevelData>(levelDataJson);
-            }
+
+            levelData = levelDatas[0];
+            return levelData;
         }
 
         public void SavePlayerData()
@@ -69,8 +74,8 @@ namespace TS.Commons
             var exp = playerData.currentExp + levelData.exp;
             if (exp >= playerData.maxExp)
             {
-                playerData = playerDatas[playerData.level];
                 playerData.currentExp = exp - playerData.maxExp;
+                playerData = playerDatas[playerData.level];
             }
             else
             {

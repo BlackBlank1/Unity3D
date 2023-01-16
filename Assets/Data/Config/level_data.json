@@ -1,10 +1,10 @@
 [
   {
-    "level": 1,
+    "id": "Level1",
     "exp": 25
   },
   {
-    "level": 2,
+    "id": "Level2",
     "exp": 75
   }
 ]

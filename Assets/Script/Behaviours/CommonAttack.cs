@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TS.Behaviours
 {
-    public class MeleeAttack : ActionTask<Enemy>
+    public class CommonAttack : ActionTask<Enemy>
     {
         [RequiredField]
         public BBParameter<Actor> target;
@@ -45,7 +45,7 @@ namespace TS.Behaviours
         {
             animator.PlayAttack();
             yield return new WaitForSeconds(preDelay.value);
-            agent.Weapon.BeginAttack(agent.transform);
+            agent.Weapon.BeginAttack();
             yield return new WaitForSeconds(attackDuration.value);
             agent.Weapon.EndAttack();
             yield return new WaitForSeconds(postDelay.value);

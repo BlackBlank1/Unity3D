@@ -20,7 +20,7 @@ namespace TS.Battle
             EndAttack();
         }
 
-        public override void BeginAttack(Transform instigator)
+        public override void BeginAttack()
         {
             attackedActors.Clear();
             collider.enabled = true;

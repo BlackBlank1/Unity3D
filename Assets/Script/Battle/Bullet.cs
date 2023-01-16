@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TS.Actors;
+using TS.Actors.Player;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -16,8 +17,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float lifeTime = 2f;
 
-    [SerializeField]
-    private float damage = 10;
+    public float damage { get; set; }
 
     private Rigidbody rb;
 
@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Actor actor))

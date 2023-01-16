@@ -19,7 +19,7 @@ namespace TS.Actors.Player.States
             if (p.input.fire || p.input.fireDown)
             {
                 p.animator.SetBool(AnimID.IsFiring, true);
-                p.gun.Fire(p.transform);
+                p.gun.BeginAttack();
                 p.input.fireDown = false;
             }
             else

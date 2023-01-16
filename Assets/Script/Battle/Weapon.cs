@@ -8,7 +8,7 @@ namespace TS.Battle
     {
         public Actor Owner;
 
-        public abstract void BeginAttack(Transform instigator);
+        public abstract void BeginAttack();
 
         public abstract void EndAttack();
     }

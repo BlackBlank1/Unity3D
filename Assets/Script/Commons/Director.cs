@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TS.Actors.Enemies;
+using TS.Entities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TS.Commons
 {
     public class Director : MonoBehaviour
     {
         private float count;
+
+        public int levelExp;
         
         public event Action OnGameWin;
         private void Awake()
@@ -20,9 +25,13 @@ namespace TS.Commons
 
         }
 
-        private void Start()
+        private async void Start()
         {
-            DataManager.Instance.ReadLevelData();
+            var scene = SceneManager.GetActiveScene();
+            var sceneName = scene.name;
+            LevelData levelData;
+            levelData = await DataManager.Instance.ReadLevelData(sceneName);
+            levelExp = levelData.exp;
         }
 
         private void OnFinished()

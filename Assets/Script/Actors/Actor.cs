@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 
 namespace TS.Actors
 {
+    [SelectionBase]
     public class Actor : MonoBehaviour
     {
         public float hp = 100f;

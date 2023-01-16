@@ -6,14 +6,15 @@ namespace TS.Battle
     public class RangeWeapon : Weapon
     {
         [SerializeField]
-        private Bullet bulletPrefab;
+        protected Bullet bulletPrefab;
 
         [SerializeField]
         private Transform firePoint;
 
-        public override void BeginAttack(Transform instigator)
+        public override void BeginAttack()
         {
-            Instantiate(bulletPrefab, firePoint.position, instigator.rotation);
+            var bullet = Instantiate(bulletPrefab, firePoint.position, Owner.transform.rotation);
+            bullet.damage = Owner.damage;
         }
 
         public override void EndAttack()

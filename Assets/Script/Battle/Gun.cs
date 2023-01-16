@@ -7,23 +7,21 @@ using UnityEngine.PlayerLoop;
 namespace TS.Battle
 {
 
-    public class Gun : MonoBehaviour
+    public class Gun : RangeWeapon
     {
         public Transform firePoint;
-
-        [SerializeField]
-        private GameObject bulletPrefab;
 
         [SerializeField]
         private float fireInterval = 0.5f;
 
         private float fireCounter = 0;
 
-        public void Fire(Transform instigator)
+        public override void BeginAttack()
         {
             if (fireCounter <= 0)
             {
-                Instantiate(bulletPrefab, firePoint.position, instigator.rotation);
+                var bullet = Instantiate(bulletPrefab, firePoint.position, Owner.transform.rotation);
+                bullet.damage = Owner.damage;
                 fireCounter = fireInterval;
             }
         }

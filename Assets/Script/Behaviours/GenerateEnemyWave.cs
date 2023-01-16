@@ -43,7 +43,7 @@ namespace TS.Behaviours
                     GameObject go = Object.Instantiate(enemyPrefabs.GetRandomItem()); //生成敌人
                     go.transform.position = hitInfo.point;
                     Actor actor = go.GetComponent<Actor>();
-                    actor.damage = wave.damageMultiplier;
+                    actor.damage *= wave.damageMultiplier;
                     actor.hp *= wave.hpMultiplier;
                     actor.maxHp *= wave.hpMultiplier;
                     agent.AddNewEnemy(actor);

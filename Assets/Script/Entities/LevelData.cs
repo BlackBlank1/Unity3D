@@ -5,7 +5,7 @@ namespace TS.Entities
     [Serializable]
     public class LevelData
     {
-        public int id;
+        public String id;
         public int exp;
     }
 }
