@@ -1578,8 +1578,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1919.9999, y: 990.7389}
+  m_AnchoredPosition: {x: 0, y: 3.2497}
+  m_SizeDelta: {x: 1919.9999, y: 1088.2285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574432956
 MonoBehaviour:
@@ -1594,15 +1594,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8235294}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bfd71187e5f614337ae0b4a9bcfff07f, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 03f0513cf9924497c8eb042e999d16dd, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1698,7 +1698,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 122678983}
   m_FillRect: {fileID: 1880156557}
   m_HandleRect: {fileID: 122678982}
@@ -5930,7 +5930,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1033599959302706172, guid: 21a772f2817260241b0ad9d51c3232c2, type: 3}
   firePoint: {fileID: 5868855818316825945}
   firePoint: {fileID: 5868855818316825945}
-  bulletPrefab: {fileID: 1033599959302706172, guid: 21a772f2817260241b0ad9d51c3232c2, type: 3}
   fireInterval: 0.2
 --- !u!4 &2284485196153122700
 Transform:
