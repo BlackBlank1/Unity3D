@@ -3,6 +3,7 @@ using TS.Actors;
 using TS.Actors.Player;
 using TS.Commons;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,6 +25,9 @@ namespace TS.UI
 
         [SerializeField]
         private GameObject menuUI;
+
+        [SerializeField]
+        private Button backHomeSceneButton;
         
         public Slider playerHpSlider;
 
@@ -65,6 +69,11 @@ namespace TS.UI
             quitButton.onClick.AddListener(() =>
             {
                 GameManager.Instance.Quit();
+            });
+            backHomeSceneButton.onClick.AddListener(() =>
+            {
+                GameManager.Instance.LoadScene("HomeScene");
+                Time.timeScale = 1;
             });
         }
 
