@@ -1,5 +1,6 @@
 ﻿using System;
 using TMPro;
+using TS.Commons;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ namespace TS.UI
     {
         [SerializeField]
         private Button backButton;
+
+        [SerializeField]
+        private Button quitButton;
         
         public TMP_Dropdown QualityDropdown;
 
@@ -17,13 +21,17 @@ namespace TS.UI
         private FullScreenMode fullScreenMode;
         
         private int qualityLevel;
-        
+
         private void Start()
         {
             backButton.onClick.AddListener((() =>
             {
                 gameObject.SetActive(false);
             })); 
+            quitButton.onClick.AddListener((() =>
+            {
+                GameManager.Instance.Quit();
+            }));
             qualityLevel = QualitySettings.GetQualityLevel();
             fullScreenToggle = GameObject.Find("FullScreenToggle").GetComponent<Toggle>();
             QualityDropdown.onValueChanged.AddListener(OnQualityDropdownValueChanged);
