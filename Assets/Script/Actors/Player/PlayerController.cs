@@ -27,6 +27,9 @@ namespace TS.Actors.Player
         [SerializeField]
         private LayerMask groundLayer;
 
+        [SerializeField]
+        private ParticleSystem particleSystem;
+
         private MonoFSM fsm;
         private CharacterController cc;
         public Animator animator;
@@ -44,6 +47,9 @@ namespace TS.Actors.Player
 
         private void Awake()
         {
+            particleSystem.Stop();
+            var addHpButton = FindObjectOfType<Skills>();
+            addHpButton.AddHp += AddHp;
             cc = GetComponent<CharacterController>();
             gun = GetComponentInChildren<Gun>();
             gun.Owner = this;
@@ -52,6 +58,12 @@ namespace TS.Actors.Player
             aimLine = GetComponentInChildren<AimLine>();
             fsm = GetComponent<MonoFSM>();
             InitFSM();
+        }
+
+        private void AddHp()
+        {
+            particleSystem.Play();
+            HpChange(25);
         }
 
         protected override void Start()

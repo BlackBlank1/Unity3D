@@ -28,12 +28,16 @@ namespace TS.Actors
 
         public virtual void HpChange(float delta)
         {
+            if (hp + delta > maxHp)
+            {
+                hp = maxHp;
+            }
             if (IsDead)
             {
                 return;
             }
 
-            hp = Mathf.Clamp(hp + delta, 0, maxHp);
+            hp = Mathf.Clamp(hp + delta, 0, maxHp); //Clamp返回的是介于最大值和最小值之间的数
             OnHpChanged?.Invoke(hp, maxHp, delta);
             if (hp <= 0)
             {
