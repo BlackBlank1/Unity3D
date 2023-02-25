@@ -29,6 +29,9 @@ namespace TS.Actors.Player
 
         [SerializeField]
         private ParticleSystem particleSystem;
+        
+        [SerializeField]
+        private DynamicJoystick dynamicJoystick;
 
         private MonoFSM fsm;
         private CharacterController cc;
@@ -111,10 +114,11 @@ namespace TS.Actors.Player
         /// </summary>
         public void HandleMovement(float speed)
         {
-            var movement = new Vector3(
-                Input.GetAxis("Horizontal"),
-                0,
-                Input.GetAxis("Vertical")).normalized;
+            var movement = input.movment;
+            // var movement = new Vector3(
+            //     Input.GetAxis("Horizontal"),
+            //     0,
+            //     Input.GetAxis("Vertical")).normalized;
 
             if (movement != Vector3.zero)
                 moveDirection = movement;
@@ -149,19 +153,28 @@ namespace TS.Actors.Player
             if (turnSpeed == null)
                 turnSpeed = aimTurnSpeed;
 
-            // TODO 适配触屏摇杆
-            // 根据鼠标位置来进行转向
-            var ray = camera.ScreenPointToRay(Input.mousePosition);
-            var isHit = Physics.Raycast(ray, out var hitInfo, float.PositiveInfinity, groundLayer);
-            if (isHit)
+            // 适配触屏摇杆
+            if (input.fireDirection == Vector3.zero)
             {
-                aimDirection = hitInfo.point - transform.position;
-                aimDirection.y = 0;
-                RotateTowards(aimDirection, turnSpeed.Value);
+                // 根据鼠标位置来进行转向
+                var ray = camera.ScreenPointToRay(Input.mousePosition);
+                var isHit = Physics.Raycast(ray, out var hitInfo, float.PositiveInfinity, groundLayer);
+                if (isHit)
+                {
+                    aimDirection = hitInfo.point - transform.position;
+                    aimDirection.y = 0;
+                    RotateTowards(aimDirection, turnSpeed.Value);
+                }
+                else
+                {
+                    aimDirection = transform.forward;
+                }
             }
             else
             {
-                aimDirection = transform.forward;
+                aimDirection = input.fireDirection;
+                aimDirection.y = 0;
+                RotateTowards(aimDirection, turnSpeed.Value);
             }
         }
 

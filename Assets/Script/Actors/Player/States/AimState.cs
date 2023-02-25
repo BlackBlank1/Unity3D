@@ -10,7 +10,10 @@ namespace TS.Actors.Player.States
         {
             base.Execute();
             p.HandleMovement(p.aimSpeed);
-            p.RotateTowardsAim();
+            if (p.input.aim || p.input.fire)
+            {
+                p.RotateTowardsAim();
+            }
 
             var aimLineForward = p.gun.firePoint.forward;
             aimLineForward.y = 0;

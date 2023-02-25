@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 281094500}
-  m_IndirectSpecularColor: {r: 0.50275165, g: 0.43771356, b: 0.4394761, a: 1}
+  m_IndirectSpecularColor: {r: 0.5027526, g: 0.43771505, b: 0.4394777, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -388,6 +388,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1364949184, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 721871292416420682, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2495646699042913672, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
       propertyPath: m_Name
       value: InGame
@@ -624,6 +632,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5929596876077535971, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
 --- !u!114 &113696154 stripped
@@ -635,6 +647,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &113696155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 721871292416420679, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
+  m_PrefabInstance: {fileID: 113696153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &113696156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5929596876077535970, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
+  m_PrefabInstance: {fileID: 113696153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0d0e7a039f526499c356a3c5cd6d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &119557535
@@ -5175,6 +5209,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInput
       objectReference: {fileID: 0}
+    - target: {fileID: 9037274809573205949, guid: 1742aea9502a2f8438b1fe549ecc8ebd, type: 3}
+      propertyPath: fireJoystick
+      value: 
+      objectReference: {fileID: 113696155}
+    - target: {fileID: 9037274809573205949, guid: 1742aea9502a2f8438b1fe549ecc8ebd, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 113696156}
     - target: {fileID: 9037274809573205950, guid: 1742aea9502a2f8438b1fe549ecc8ebd, type: 3}
       propertyPath: m_RootOrder
       value: 3

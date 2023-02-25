@@ -12,14 +12,26 @@ namespace TS.Actors.Player
         [SerializeField]
         private Button damageButton;
 
+        public float addHpTime;
+        public float damageTime;
+
         public event Action AddHp;
 
         private void Start()
         {
             addHp.onClick.AddListener(() =>
             {
-                AddHp?.Invoke();
+                if (addHp.image.fillAmount == 1)
+                {
+                    AddHp?.Invoke();
+                    addHp.image.fillAmount = 0;
+                }
             });
+        }
+
+        private void Update()
+        {
+            addHp.image.fillAmount += Time.deltaTime * (1 / addHpTime);
         }
     }
 }

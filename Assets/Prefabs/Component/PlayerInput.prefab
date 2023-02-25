@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a51ad7876d1403e93f1f0035896890f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movment: {x: 0, y: 0}
+  dontDestroyOnLoad: 0
+  movment: {x: 0, y: 0, z: 0}
   fire: 0
   fireDown: 0
   aim: 0
+  moveJoystick: {fileID: 0}
+  fireJoystick: {fileID: 0}
+  fireDirection: {x: 0, y: 0, z: 0}
