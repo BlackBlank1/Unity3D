@@ -418,7 +418,7 @@ MonoBehaviour:
   addHp: {fileID: 18886197}
   damageButton: {fileID: 632439428}
   addHpTime: 20
-  damageTime: 0
+  damageTime: 15
 --- !u!1 &2136984198
 GameObject:
   m_ObjectHideFlags: 0
@@ -5931,6 +5931,10 @@ PrefabInstance:
     - target: {fileID: 320812768854584868, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320812768854584868, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 320812768973034546, guid: fa79ff6c23e0849b3b91e3309d32bf58, type: 3}
       propertyPath: m_text

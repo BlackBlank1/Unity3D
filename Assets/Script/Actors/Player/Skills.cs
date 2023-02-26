@@ -17,6 +17,8 @@ namespace TS.Actors.Player
 
         public event Action AddHp;
 
+        public event Action DamageFalling; 
+
         private void Start()
         {
             addHp.onClick.AddListener(() =>
@@ -27,11 +29,21 @@ namespace TS.Actors.Player
                     addHp.image.fillAmount = 0;
                 }
             });
+            
+            damageButton.onClick.AddListener((() =>
+            {
+                if (damageButton.image.fillAmount == 1)
+                {
+                    DamageFalling?.Invoke();
+                    damageButton.image.fillAmount = 0;
+                }
+            }));
         }
 
         private void Update()
         {
             addHp.image.fillAmount += Time.deltaTime * (1 / addHpTime);
+            damageButton.image.fillAmount += Time.deltaTime * (1 / damageTime);
         }
     }
 }
