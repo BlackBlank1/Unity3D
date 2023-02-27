@@ -23,11 +23,7 @@ namespace TS.Commons
         {
             return a.x.Approximately(b.x, epsilon) && a.y.Approximately(b.y, epsilon) && a.z.Approximately(b.z, epsilon);
         }
-
-        public static bool Approximately(this float a, float b, float epsilon = .05f)
-        {
-            return Mathf.Abs(a - b) < epsilon;
-        }
+        
 
         public static bool Approximately(this Quaternion a, Quaternion b, float epsilon = .05f)
         {

@@ -29,5 +29,10 @@ namespace TS.Commons
             var index = Random.Range(0, array.Length);
             return array[index];
         }
+
+        public static bool Approximately(this float value, float target, float tolerance = 0.05f)
+        {
+            return Mathf.Abs(target - value) <= tolerance;
+        }
     }
 }
