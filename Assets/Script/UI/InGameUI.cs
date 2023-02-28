@@ -73,6 +73,7 @@ namespace TS.UI
             backHomeSceneButton.onClick.AddListener(() =>
             {
                 GameManager.Instance.LoadScene("HomeScene");
+                AudioManager.Instance.PlayTitleMusic();
                 Time.timeScale = 1;
             });
         }

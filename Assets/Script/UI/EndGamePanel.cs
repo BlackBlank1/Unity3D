@@ -20,6 +20,7 @@ namespace TS.UI
             button.onClick.AddListener(() =>
             {
                 GameManager.Instance.LoadScene("HomeScene");
+                AudioManager.Instance.PlayTitleMusic();
                 Time.timeScale = 1;
             });
             canvasGroup = GetComponent<CanvasGroup>();

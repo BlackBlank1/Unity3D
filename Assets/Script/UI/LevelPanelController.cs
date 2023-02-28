@@ -61,6 +61,7 @@ namespace TS.UI
             battle_button.onClick.AddListener(() =>
             {
                 GameManager.Instance.LoadScene(sceneName);
+                AudioManager.Instance.PlayBattleMusic();
             });
 
             cancel_button.onClick.AddListener(() =>

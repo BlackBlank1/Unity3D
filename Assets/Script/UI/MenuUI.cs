@@ -2,6 +2,7 @@
 using TMPro;
 using TS.Commons;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace TS.UI
@@ -19,7 +20,13 @@ namespace TS.UI
         private Toggle fullScreenToggle;
         
         private FullScreenMode fullScreenMode;
+
+        [SerializeField]
+        private Slider soundVolume;
         
+        [SerializeField]
+        private Slider musicVolume;
+
         private int qualityLevel;
 
         private void Start()
@@ -32,17 +39,27 @@ namespace TS.UI
             {
                 GameManager.Instance.Quit();
             }));
+            
             qualityLevel = QualitySettings.GetQualityLevel();
-            fullScreenToggle = GameObject.Find("FullScreenToggle").GetComponent<Toggle>();
+            QualityDropdown.SetValueWithoutNotify(qualityLevel);
             QualityDropdown.onValueChanged.AddListener(OnQualityDropdownValueChanged);
+            
+            fullScreenToggle = GameObject.Find("FullScreenToggle").GetComponent<Toggle>();
             fullScreenToggle.onValueChanged.AddListener(FullScreen);
+            
+            //音乐
+            musicVolume.value = AudioManager.Instance.GetMusicVolume();
+            musicVolume.onValueChanged.AddListener(value => AudioManager.Instance.SetMusicVolume(value));
+            
+            //音效
+            soundVolume.value = AudioManager.Instance.GetSoundVolume();
+            soundVolume.onValueChanged.AddListener(value => AudioManager.Instance.SetSoundVolume(value));
         }
 
         public void FullScreen(bool isOn)
         {
             if (isOn)
             {
-                Debug.Log("111");
                 //设置当前分辨率
                 var fullResolution = Screen.resolutions[^1];
                 fullScreenMode = Screen.fullScreenMode;
