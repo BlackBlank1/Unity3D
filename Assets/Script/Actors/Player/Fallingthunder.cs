@@ -11,9 +11,7 @@ namespace TS.Actors.Player
 
         [SerializeField]
         private Transform[] firePoints;
-
-        [SerializeField]
-        private AudioSource audioSource;
+        
 
         public float mutiplier = 1.2f;
         
@@ -25,7 +23,6 @@ namespace TS.Actors.Player
 
         private void DamageFalling()
         {
-            audioSource.Play();
             for (int i = 0; i < firePoints.Length; i++)
             {
                 var bullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);

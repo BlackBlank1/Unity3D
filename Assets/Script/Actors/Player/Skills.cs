@@ -12,6 +12,12 @@ namespace TS.Actors.Player
         [SerializeField]
         private Button damageButton;
 
+        [SerializeField]
+        private AudioSource addHpAudio;
+
+        [SerializeField]
+        private AudioSource damageAudio;
+
         public float addHpTime;
         public float damageTime;
 
@@ -27,6 +33,7 @@ namespace TS.Actors.Player
                 {
                     AddHp?.Invoke();
                     addHp.image.fillAmount = 0;
+                    addHpAudio.Play();
                 }
             });
             
@@ -36,6 +43,7 @@ namespace TS.Actors.Player
                 {
                     DamageFalling?.Invoke();
                     damageButton.image.fillAmount = 0;
+                    damageAudio.Play();
                 }
             }));
         }
