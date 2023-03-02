@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TS.Actors.Enemies;
 using TS.Entities;
+using TS.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,7 @@ namespace TS.Commons
         private float count;
 
         public int levelExp;
-        
+
         public event Action OnGameWin;
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace TS.Commons
             }
 
         }
+        
 
         private async void Start()
         {

@@ -16,8 +16,10 @@ namespace TS.UI
         {
             StartCoroutine(Util.Delay(delay, () =>
             {
+                //将界面显示
                 canvasGroup.alpha = 1;
                 canvasGroup.blocksRaycasts = true;
+                //游戏内动画等都暂停
                 Time.timeScale = 0;
             }));
         }
