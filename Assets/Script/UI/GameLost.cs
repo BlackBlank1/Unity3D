@@ -12,16 +12,8 @@ namespace TS.UI
         {
             var playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             playerController.OnDead += OnDead;
-            var clock = FindObjectOfType<Clock>();
-            clock.TimeIsArrive += TimeIsArrive;
         }
-
-        private void TimeIsArrive()
-        {
-            canvasGroup.alpha = 1;
-            canvasGroup.blocksRaycasts = true;
-        }
-
+        
         private void OnDead(Actor obj)
         {
             StartCoroutine(Util.Delay(delay, () =>

@@ -17,6 +17,7 @@ namespace TS.UI
         private float surviveTime;
 
         private float currentTime;
+        private bool count = false;
 
         public event Action TimeIsArrive;
 
@@ -40,7 +41,7 @@ namespace TS.UI
                 //对3600取余再对60取余即为秒数
                 seconds = seconds % 3600 % 60;
                 //返回00:00:00时间格式
-                if (seconds <= 10)
+                if (seconds <= 10 && minute == 0)
                 {
                     time.color = new Color(104, 0, 0 , 255);
                 }
@@ -48,7 +49,11 @@ namespace TS.UI
             }
             else
             {
-                TimeIsArrive?.Invoke();
+                if (!count)
+                {
+                    TimeIsArrive?.Invoke();
+                    count = true;
+                }
                 time.text = "00:00";
             }
         }

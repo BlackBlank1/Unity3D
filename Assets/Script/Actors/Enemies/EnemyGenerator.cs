@@ -22,6 +22,11 @@ namespace TS.Actors.Enemies
             blackboard = GetComponent<Blackboard>();
         }
 
+        public void RandomGenerator()
+        {
+            blackboard.SetVariableValue("IsStarted", true);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))

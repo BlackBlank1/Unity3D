@@ -74,14 +74,22 @@ namespace TS.Commons
             var exp = playerData.currentExp + levelData.exp;
             if (exp >= playerData.maxExp)
             {
-                playerData.currentExp = exp - playerData.maxExp;
-                playerData = playerDatas[playerData.level];
+                var cur = exp - playerData.maxExp;
+                if (playerData.level > playerDatas.Length)
+                {
+                    playerData = playerDatas[playerDatas.Length];
+                    playerData.currentExp = playerDatas[playerDatas.Length].maxExp;
+                }
+                else
+                {
+                    playerData = playerDatas[playerData.level];
+                    playerData.currentExp = cur;
+                }
             }
             else
             {
                 playerData.currentExp = exp;
             }
-
             SavePlayerData();
         }
     }

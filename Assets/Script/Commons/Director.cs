@@ -14,6 +14,8 @@ namespace TS.Commons
 
         public int levelExp;
 
+        private bool win = false;
+
         public event Action OnGameWin;
         private void Awake()
         {
@@ -25,7 +27,6 @@ namespace TS.Commons
             }
 
         }
-        
 
         private async void Start()
         {
@@ -34,6 +35,14 @@ namespace TS.Commons
             LevelData levelData;
             levelData = await DataManager.Instance.ReadLevelData(sceneName);
             levelExp = levelData.exp;
+            var clock = FindObjectOfType<Clock>();
+            clock.TimeIsArrive += TimeIsArrive;
+        }
+        
+        private void TimeIsArrive()
+        {
+            count = 1;
+            OnFinished();
         }
 
         private void OnFinished()
@@ -45,5 +54,6 @@ namespace TS.Commons
                 OnGameWin?.Invoke();
             }
         }
+        
     }
 }

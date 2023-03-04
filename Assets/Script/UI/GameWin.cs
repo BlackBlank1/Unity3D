@@ -11,7 +11,7 @@ namespace TS.UI
             var director = FindObjectOfType<Director>();
             director.OnGameWin += OnGameWin;
         }
-
+        
         private void OnGameWin()
         {
             StartCoroutine(Util.Delay(delay, () =>

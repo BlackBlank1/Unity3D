@@ -56,6 +56,7 @@ namespace TS.UI
             back_button.onClick.AddListener(() =>
             {
                 gameObject.SetActive(false);
+                HideLevelDetail();
             });
 
             battle_button.onClick.AddListener(() =>
