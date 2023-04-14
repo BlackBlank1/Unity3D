@@ -15,6 +15,7 @@ namespace TS.Commons
         {
             if (Instance)
             {
+                //销毁物体
                 Destroy(gameObject);
                 return;
             }
@@ -23,6 +24,7 @@ namespace TS.Commons
 
             if (dontDestroyOnLoad)
             {
+                //如果dontDestroyOnLoad为true，则不销毁当前物体
                 DontDestroyOnLoad(gameObject);
             }
         }

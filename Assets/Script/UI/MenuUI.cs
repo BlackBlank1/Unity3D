@@ -40,8 +40,10 @@ namespace TS.UI
                 GameManager.Instance.Quit();
             }));
             
+            //获取到当前的画质等级
             qualityLevel = QualitySettings.GetQualityLevel();
             QualityDropdown.SetValueWithoutNotify(qualityLevel);
+            //当选择画质时，调用OnQualityDropdownValueChanged进行画质切换
             QualityDropdown.onValueChanged.AddListener(OnQualityDropdownValueChanged);
             
             fullScreenToggle = GameObject.Find("FullScreenToggle").GetComponent<Toggle>();
@@ -71,6 +73,7 @@ namespace TS.UI
         
         private void OnQualityDropdownValueChanged(int value)
         {
+            //设置画质等级
             QualitySettings.SetQualityLevel(value);
         }
     }

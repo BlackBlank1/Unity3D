@@ -5500,6 +5500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skills
       objectReference: {fileID: 0}
+    - target: {fileID: 5061754868077431026, guid: 93605d63f7350ef438d4e110687d048c, type: 3}
+      propertyPath: damageTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93605d63f7350ef438d4e110687d048c, type: 3}
 --- !u!224 &139712596184597821 stripped

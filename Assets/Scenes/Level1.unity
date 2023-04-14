@@ -1574,6 +1574,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8867360206595916648, guid: 27be7160740fa4342b7bbbc38d60c41d, type: 3}
+      propertyPath: m_AllowXRRendering
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8867360206595916651, guid: 27be7160740fa4342b7bbbc38d60c41d, type: 3}
       propertyPath: m_Name
       value: MinMapCamera
@@ -4087,6 +4091,10 @@ PrefabInstance:
     - target: {fileID: 1285540402, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 139712596184597821, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.333862
       objectReference: {fileID: 0}
     - target: {fileID: 6018689377319584348, guid: 40bfaaed3a860a842993caf0607a16b7, type: 3}
       propertyPath: m_AnchorMax.y

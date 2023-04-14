@@ -31,7 +31,6 @@ namespace TS.Commons
             if (string.IsNullOrEmpty(playerDataJson))
             {
                 // playerDataJson为空的话，则从玩家数据配置表读取等级为1时候的数据
-
                 playerData = playerDatas[0];
             }
             else
@@ -46,6 +45,7 @@ namespace TS.Commons
         {
             if (levelDatas == null)
             {
+                //如果关卡数据为空，则通过文件level_data进行获取数据
                 var textAsset = await AssetManager.LoadAssetAsync<TextAsset>("level_data");
                 levelDatas = JsonConvert.DeserializeObject<LevelData[]>(textAsset.text);
             }
@@ -53,17 +53,19 @@ namespace TS.Commons
             {
                 if (levelDatas[i].id == sceneName)
                 {
+                    //如果当前关卡名字和level_data中数据相匹配，则赋值到当前关卡数据
                     levelData = levelDatas[i];
                     return levelData;
                 }
             }
-
+            //如果levelDatas中找不到和当前关卡名字匹配的数据，则直接拿levelDatas中第一个作为当前关卡数据
             levelData = levelDatas[0];
             return levelData;
         }
 
         public void SavePlayerData()
         {
+            //保存当前玩家的数据
             var json = JsonConvert.SerializeObject(playerData);
             PlayerPrefs.SetString(keyPlayerData, json);
             PlayerPrefs.Save();
@@ -72,16 +74,20 @@ namespace TS.Commons
         public void LevelUP()
         {
             var exp = playerData.currentExp + levelData.exp;
+            //如果exp大于当前玩家的最大exp
             if (exp >= playerData.maxExp)
             {
                 var cur = exp - playerData.maxExp;
+                //如果当前玩家等级超过了上限
                 if (playerData.level > playerDatas.Length)
                 {
+                    //则无法超过最大等级和经验值
                     playerData = playerDatas[playerDatas.Length];
                     playerData.currentExp = playerDatas[playerDatas.Length].maxExp;
                 }
                 else
                 {
+                    //否则赋值为下一等级的数据
                     playerData = playerDatas[playerData.level];
                     playerData.currentExp = cur;
                 }
@@ -90,6 +96,7 @@ namespace TS.Commons
             {
                 playerData.currentExp = exp;
             }
+            //保存玩家数据
             SavePlayerData();
         }
     }

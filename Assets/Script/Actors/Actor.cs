@@ -4,22 +4,29 @@ using UnityEngine.Serialization;
 
 namespace TS.Actors
 {
+    //因为在 Scene 视图中很难选中我们需要的节点，所以添加SelectionBase特性，这样的话，该对象的所有节点都会定位到绑定这个标记的对象身上
     [SelectionBase]
     public class Actor : MonoBehaviour
     {
+        //hp值
         public float hp = 100f;
 
+        //maxHp值
         public float maxHp = 100f;
 
+        //防止重命名变量后丢失引用
         [FormerlySerializedAs("Damage")]
         public float damage = 10f;
 
+        //判断是否死亡
         public bool IsDead { get; protected set; }
+        
+        //死亡事件
         public event Action<Actor> OnDead;
 
         public delegate void HpChangeDelegate(float hp, float maxHp, float delta); //委托
 
-        public event HpChangeDelegate OnHpChanged; //事件
+        public event HpChangeDelegate OnHpChanged; //生命值改变事件
 
         protected virtual void Start()
         {
@@ -48,6 +55,7 @@ namespace TS.Actors
 
         protected virtual void Die()
         {
+            //死亡后，广播事件
             OnDead?.Invoke(this);
         }
     }

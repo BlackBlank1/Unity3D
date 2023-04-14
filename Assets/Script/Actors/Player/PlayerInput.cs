@@ -22,13 +22,17 @@ namespace TS.Actors.Player
 
         private void Update()
         {
+            //获取水平输入
             var horizontal = Input.GetAxis("Horizontal");
+            //获取垂直输入
             var vertical = Input.GetAxis("Vertical");
 
             //判断如果没有输入再获取摇杆的值
             horizontal = horizontal == 0 ? moveJoystick.Horizontal : horizontal;
             vertical = vertical == 0 ? moveJoystick.Vertical : vertical;
+            //设置移动方向
             movment = new Vector3(horizontal, 0, vertical).normalized;
+            //设置开火方向
             fireDirection = new Vector3(fireJoystick.Horizontal, 0, fireJoystick.Vertical);
 
             
